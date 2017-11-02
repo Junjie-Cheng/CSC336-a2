@@ -1,0 +1,64 @@
+\documentclass[11pt, answers]{exam}
+\renewcommand{\baselinestretch}{1.05}
+\usepackage{amsmath,amsthm,verbatim,amssymb,amsfonts,amscd, graphicx}
+\usepackage{graphics}
+
+\usepackage{afterpage}
+\usepackage{caption}
+
+\usepackage{fancybox}
+
+\usepackage{clrscode3e}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\topmargin0.0cm
+\headheight0.0cm
+\headsep0.0cm
+\oddsidemargin0.0cm
+\textheight23.0cm
+\textwidth16.5cm
+\footskip1.0cm
+\theoremstyle{plain}
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem*{surfacecor}{Corollary 1}
+\newtheorem{conjecture}{Conjecture}  
+\newtheorem{definition}{Definition}
+\newcommand{\R}{\mathbb{R}}
+
+\title{CSC336: Assignment 2}
+\author{Junjie Cheng, 1002770539}
+\date{November 1 2017}
+
+\begin{document}
+
+\maketitle
+
+\begin{questions}
+\question %Q1
+Let $x$ be an arbitrary number in $\R^n$ for arbitrary $n \ge 1$, by definition, $||x||_2 = \sqrt{\Sigma_{i=1}^n x_i^2} $. 
+
+By customary we define $\Sigma_{k=n}^m$ with $n>m$ as the empty sum (i.e. $0$). Then we have
+
+$||x||_1 = \Sigma_{i=1}^n |x_i| = \sqrt{(\Sigma_{i=1}^n |x_i|)^2} = \sqrt{\Sigma_{i=1}^n x_i^2 + 2\Sigma_{i=1}^n \Sigma_{j=i+1}^n |x_i||x_j|}$.
+
+Since $|x_i| \ge 0$ for all $1 \le i \le n$, $|x_i||x_j| \ge 0$ for all $1 \le i \le j \le n$. So, $2\Sigma_{i=1}^n \Sigma_{j=i+1}^n |x_i||x_j| \ge 0$ for all $n \ge 1$.
+
+Then we have $||x||_2 = \sqrt{\Sigma_{i=1}^n x_i^2} \le \sqrt{\Sigma_{i=1}^n x_i^2 + 2\Sigma_{i=1}^n \Sigma_{j=i+1}^n |x_i||x_j|} = ||x||_1$.
+
+\question %Q2
+It is possible. Here is an example.
+
+$x = (48, 55)^T, ||x||_1 = |48|+|55|= 103, ||x||_2 = \sqrt{48^2+55^2} = 73$;
+
+$y = (13, 84)^T, ||y||_1 = |13|+|84|= 97,  ||y||_2 = \sqrt{13^2+84^2} = 85$;
+
+$||x||_1 = 103 > 97 = ||y||_1$ while $||x||_2 = 73 < 85 = ||y||_2$.
+
+
+\end{questions}
+\end{document}
