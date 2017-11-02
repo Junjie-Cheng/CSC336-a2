@@ -59,6 +59,14 @@ $y = (13, 84)^T, ||y||_1 = |13|+|84|= 97,  ||y||_2 = \sqrt{13^2+84^2} = 85$;
 
 $||x||_1 = 103 > 97 = ||y||_1$ while $||x||_2 = 73 < 85 = ||y||_2$.
 
+\question %Q3
+Since $Ax = b$ and $A\hat{x} = \hat{b}$, we have
+$A(x-\hat{x}) = b - \hat{b}$. 
 
+So $||b-\hat{b}|| = ||A(x-\hat{x})|| \le ||A||\cdot||x-\hat{x}||$.
+
+On the other hand, $A^{-1}b = x$, so $||x|| = ||A^{-1}b|| \le ||A^{-1}||\cdot||b||$.
+
+Since all norms are equal or greater than zero, we have $||b-\hat{b}|| \cdot ||x|| \le ||A||\cdot||A^{-1}|| \cdot ||x-\hat{x}|| \cdot ||b||$, so $\frac{1}{||A||\cdot||A^{-1}||}\frac{||b-\hat{b}||}{||b||} \le \frac{||x-\hat{x}||}{||x||}$, i.e. $ \frac{1}{cond(A)}\frac{||b-\hat{b}||}{||b||} \le \frac{||x-\hat{x}||}{||x||}$.
 \end{questions}
 \end{document}
