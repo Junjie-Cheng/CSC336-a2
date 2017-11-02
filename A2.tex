@@ -68,5 +68,31 @@ So $||b-\hat{b}|| = ||A(x-\hat{x})|| \le ||A||\cdot||x-\hat{x}||$.
 On the other hand, $A^{-1}b = x$, so $||x|| = ||A^{-1}b|| \le ||A^{-1}||\cdot||b||$.
 
 Since all norms are equal or greater than zero, we have $||b-\hat{b}|| \cdot ||x|| \le ||A||\cdot||A^{-1}|| \cdot ||x-\hat{x}|| \cdot ||b||$, so $\frac{1}{||A||\cdot||A^{-1}||}\frac{||b-\hat{b}||}{||b||} \le \frac{||x-\hat{x}||}{||x||}$, i.e. $ \frac{1}{cond(A)}\frac{||b-\hat{b}||}{||b||} \le \frac{||x-\hat{x}||}{||x||}$.
+
+\question %Q4
+\begin{parts}
+\part
+See attachments for code and result.
+\part
+By $Af=b$, we have $f = A^{-1}b$, so $||f|| \le ||A^{-1}||\cdot||b||$.
+
+Since $r = b - A\hat{f}$, we have $||r|| = ||b-A\hat{f}|| = ||Af - A\hat{f}|| = ||A(f-\hat{f})|| \le ||A|| \cdot ||f-\hat{f}||$.
+
+Since all norms are non-negative, we have $||r||\cdot||f|| \le ||A||\cdot||A^{-1}||\cdot||f-\hat{f}||\cdot||b||$. So,
+
+$\frac{1}{cond(A)}\cdot\frac{||r||}{||b||} \le \frac{||\hat{f}-f||}{||f||}$
+
+On the other hand, since $r = b-A\hat{f} = Af - A\hat{f}$, we have $f-\hat{f} = A^{-1}r$. Then,
+
+$||f-\hat{f}|| \le ||A^{-1}||\cdot||r||$. We also have $||b|| \le ||A||\cdot||f||$, so 
+
+$||f-\hat{f}||\cdot||b|| \le ||A^{-1}||\cdot||A||\cdot||r||\cdot||f||$, and we have
+
+$\frac{||\hat{f} - f||}{||f||} \le cond(A)\cdot\frac{||r||}{||b||}$.
+
+In conclusion, we have $ \frac{1}{cond(A)}\cdot\frac{||r||}{||b||} \le \frac{||\hat{f} - f||}{||f||} \le cond(A)\cdot\frac{||r||}{||b||} $.
+
+
+\end{parts}
 \end{questions}
 \end{document}
