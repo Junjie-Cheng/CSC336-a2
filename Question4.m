@@ -1,4 +1,4 @@
-function Question4a(~)
+function Question4(~)
 
 Alpha = sqrt(2)/2;
 A = zeros(13, 13);
@@ -39,10 +39,16 @@ b(2) = 10;
 b(8) = 15;
 b(10) = 20;
 
-f = A\b
+f = A\b %#ok<NOPRT>
 
 condA = cond(A, 2);
 
-fprintf('Conditional Number of A is %f\n', condA);
+r = b - A*f;
+r_residue = norm(r,2) / norm(b,2);
+r_error_lower = (1 / condA) *r_residue;
+r_error_upper = condA * r_residue;
+
+fprintf('Lower bound of relative error is %e\n', r_error_lower);
+fprintf('Upper bound of relative error is %e\n', r_error_upper);
 
 end
