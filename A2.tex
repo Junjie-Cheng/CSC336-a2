@@ -101,14 +101,18 @@ Upper bound of relative error is 2.088024e-15.
 \end{parts}
 \question %Q5
 As we can see from the part 1 result, the largest $n$ we can have before the error is 100 percent is $12$. Note that since $||x||=1$ , the absolute error and the relative error of $\hat{x}$ are equal.
-
-Examining the result of $cond(H)$ and $log(cond(H))$ in part 2, we find that $log(cond(H))$ and $n$ are collinear. 
+\\
+\\
+Examining the result of $cond(H)$ and $log(cond(H))$ in part 2, we find that there is a linear correlation between $log(cond(H))$ and $n$. 
 
 By Linear Regression we can write $log(cond(H)) = 3.476950n-3.654113$, i.e. 
 
-$cond(H) = e^{3.476950n-3.654113} = \frac{(e^{3.476950})^n}{e^{3.654113}}$. The condition number of $H$ is exponentially growing with respect to $n$.
+$cond(H) = e^{3.476950n-3.654113} = \frac{(e^{3.476950})^n}{e^{3.654113}}$. 
 
-We calculate the number of correct digits in the components of the computed solution as $\lfloor\log{||x||}\rfloor - \lfloor\log{(\kw{absolute error})}\rfloor = \lfloor\log{||x||}\rfloor - \lfloor\log{||x-\hat{x}||}\rfloor$. (i.e. the place of the most significant digit of $||x||$ $-$ the place of the most significant digit of absolute error).
+The condition number of $H$ is exponentially growing with respect to $n$.
+\\
+\\
+We calculate the number of correct digits in the components of the computed solution as $\lfloor\log_{10}{||x||}\rfloor - \lfloor\log_{10}{(\kw{absolute error})}\rfloor = \lfloor\log_{10}{||x||}\rfloor - \lfloor\log_{10}{||x-\hat{x}||}\rfloor$. (i.e. the place of the most significant digit of $||x||$ $-$ the place of the most significant digit of absolute error).
 
 We find that, the larger the conditional number is, the smaller the number of correct digits will be.
 
