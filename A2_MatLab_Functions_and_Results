@@ -1,55 +1,59 @@
+Junjie Cheng
+1002770539
+chenjunj
+
 function Question4(~)
 
-	Alpha = sqrt(2)/2;
-	A = zeros(13, 13);
+    Alpha = sqrt(2)/2;
+    A = zeros(13, 13);
 
-	A(1,2) = 1;
-	A(1,6) = -1;
-	A(2,3) = 1;
-	A(3,1) = Alpha;
-	A(3,4) = -1;
-	A(3,5) = -Alpha;
-	A(4,1) = Alpha;
-	A(4,3) = 1;
-	A(4,5) = Alpha;
-	A(5,4) = 1;
-	A(5,8) = -1;
-	A(6,7) = 1;
-	A(7,5) = Alpha;
-	A(7,6) = 1;
-	A(7,9) = -Alpha;
-	A(7,10) = -1;
-	A(8,5) = Alpha;
-	A(8,7) = 1;
-	A(8,9) = Alpha;
-	A(9,10) = 1;
-	A(9,13) = -1;
-	A(10,11) = 1;
-	A(11,8) = 1;
-	A(11,9) = Alpha;
-	A(11,12) = -Alpha;
-	A(12,9) = Alpha;
-	A(12,11) = 1;
-	A(12,12) = Alpha;
-	A(13,13) = 1;
-	A(13,12) = Alpha;
+    A(1,2) = 1;
+    A(1,6) = -1;
+    A(2,3) = 1;
+    A(3,1) = Alpha;
+    A(3,4) = -1;
+    A(3,5) = -Alpha;
+    A(4,1) = Alpha;
+    A(4,3) = 1;
+    A(4,5) = Alpha;
+    A(5,4) = 1;
+    A(5,8) = -1;
+    A(6,7) = 1;
+    A(7,5) = Alpha;
+    A(7,6) = 1;
+    A(7,9) = -Alpha;
+    A(7,10) = -1;
+    A(8,5) = Alpha;
+    A(8,7) = 1;
+    A(8,9) = Alpha;
+    A(9,10) = 1;
+    A(9,13) = -1;
+    A(10,11) = 1;
+    A(11,8) = 1;
+    A(11,9) = Alpha;
+    A(11,12) = -Alpha;
+    A(12,9) = Alpha;
+    A(12,11) = 1;
+    A(12,12) = Alpha;
+    A(13,13) = 1;
+    A(13,12) = Alpha;
 
-	b = zeros(13,1);
-	b(2) = 10;
-	b(8) = 15;
-	b(10) = 20;
+    b = zeros(13,1);
+    b(2) = 10;
+    b(8) = 15;
+    b(10) = 20;
 
-	f = A\b %#ok<NOPRT>
+    f = A\b %#ok<NOPRT>
 
-	condA = cond(A, 2);
+    condA = cond(A, 2);
 
-	r = b - A*f;
-	r_residue = norm(r,2) / norm(b,2);
-	r_error_lower = (1 / condA) *r_residue;
-	r_error_upper = condA * r_residue;
+    r = b - A*f;
+    r_residue = norm(r,2) / norm(b,2);
+    r_error_lower = (1 / condA) *r_residue;
+    r_error_upper = condA * r_residue;
 
-	fprintf('Lower bound of relative error is %e.\n', r_error_lower);
-	fprintf('Upper bound of relative error is %e.\n', r_error_upper);
+    fprintf('Lower bound of relative error is %e.\n', r_error_lower);
+    fprintf('Upper bound of relative error is %e.\n', r_error_upper);
 
 end
 
@@ -78,16 +82,16 @@ Upper bound of relative error is 2.088024e-15.
 
 function Question5(~)
 
-	n = 1;
-	relative_error = 0;
-	fprintf('Part1: \n');
+    n = 1;
+    relative_error = 0;
+    fprintf('Part1: \n');
     fprintf('\tn\trelative_error\n');
     warning('off');
 
     while (relative_error < 1)
-		n = n+1;
+    	n = n+1;
         [x_hat, relative_error] = hat_error(n); %relative error and absolute error are the same.       
-		fprintf('\t%d\t%e\n', n, relative_error);
+    	fprintf('\t%d\t%e\n', n, relative_error);
     end
     
     fprintf('\nPart2: \n');
@@ -123,9 +127,9 @@ end
 
 function [x_hat,err] = hat_error(n)
     H = hilb(n);
-	x = ones(n, 1);
-	b = H*x;
-	x_hat = H\b;
+    x = ones(n, 1);
+    b = H*x;
+    x_hat = H\b;
 	err = norm(x_hat-x, Inf);
 end
 
@@ -148,7 +152,7 @@ Part1:
 	13	3.079042e+00
 
 Part2: 
-	n	cond(H)			log(cond(H))
+	n	cond(H)		log(cond(H))
 	2	2.700000e+01	3.295837
 	3	7.480000e+02	6.617403
 	4	2.837500e+04	10.253264
@@ -165,18 +169,18 @@ By Linear Regression we can write log(cond(H)) = 3.476950n-3.654113
 
 Part3: 
 	n	norm(x_hat)		correct digits	cond(H)
-	2	1.000000e+00	16				2.700000e+01
-	3	1.000000e+00	15				7.480000e+02
-	4	1.000000e+00	13				2.837500e+04
-	5	1.000000e+00	12				9.436560e+05
-	6	1.000000e+00	10				2.907028e+07
-	7	1.000000e+00	8				9.851949e+08
-	8	1.000000e+00	7				3.387279e+10
-	9	1.000006e+00	6				1.099649e+12
-	10	1.000663e+00	4				3.535233e+13
-	11	1.007171e+00	3				1.229477e+15
-	12	1.227167e+00	1				3.841961e+16
-	13	4.079042e+00	0				7.490658e+17
+	2	1.000000e+00	16		2.700000e+01
+	3	1.000000e+00	15		7.480000e+02
+	4	1.000000e+00	13		2.837500e+04
+	5	1.000000e+00	12		9.436560e+05
+	6	1.000000e+00	10		2.907028e+07
+	7	1.000000e+00	8		9.851949e+08
+	8	1.000000e+00	7		3.387279e+10
+	9	1.000006e+00	6		1.099649e+12
+	10	1.000663e+00	4		3.535233e+13
+	11	1.007171e+00	3		1.229477e+15
+	12	1.227167e+00	1		3.841961e+16
+	13	4.079042e+00	0		7.490658e+17
 
 (Below are the results of the script running on MatLab online, for larger n, the results are quite different!)
 >> Question5 
@@ -196,7 +200,7 @@ Part1:
 	13	9.452850e+00
 
 Part2: 
-	n	cond(H)			log(cond(H))
+	n	cond(H)		log(cond(H))
 	2	2.700000e+01	3.295837
 	3	7.480000e+02	6.617403
 	4	2.837500e+04	10.253264
@@ -213,16 +217,16 @@ By Linear Regression we can write log(cond(H)) = 3.476950n-3.654113
 
 Part3: 
 	n	norm(x_hat)		correct digits	cond(H)
-	2	1.000000e+00	16				2.700000e+01
-	3	1.000000e+00	15				7.480000e+02
-	4	1.000000e+00	13				2.837500e+04
-	5	1.000000e+00	13				9.436560e+05
-	6	1.000000e+00	10				2.907028e+07
-	7	1.000000e+00	8				9.851949e+08
-	8	1.000001e+00	7				3.387279e+10
-	9	1.000018e+00	5				1.099649e+12
-	10	1.000277e+00	4				3.535233e+13
-	11	1.021296e+00	2				1.229477e+15
-	12	1.114396e+00	1				3.841961e+16
-	13	1.045285e+01	0				7.490658e+17
+	2	1.000000e+00	16		2.700000e+01
+	3	1.000000e+00	15		7.480000e+02
+	4	1.000000e+00	13		2.837500e+04
+	5	1.000000e+00	13		9.436560e+05
+	6	1.000000e+00	10		2.907028e+07
+	7	1.000000e+00	8		9.851949e+08
+	8	1.000001e+00	7		3.387279e+10
+	9	1.000018e+00	5		1.099649e+12
+	10	1.000277e+00	4		3.535233e+13
+	11	1.021296e+00	2		1.229477e+15
+	12	1.114396e+00	1		3.841961e+16
+	13	1.045285e+01	0		7.490658e+17
 
